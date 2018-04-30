@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="telu.steven.tugasakhir.Activity_DataC">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtTop3"
+        android:layout_marginTop="45dp"
+        android:layout_centerHorizontal="true"
+        android:text="Text"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtData3"
+        android:layout_below="@+id/txtTop3"
+        android:layout_centerHorizontal="true"
+        android:text="Value"/>
+    <Button
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dc"
+        android:text="Disconnect"/>
+</RelativeLayout>
