@@ -15,12 +15,16 @@
     android:layout_width="match_parent"
     android:layout_height="70dp">
     <LinearLayout
-        android:background="#3374FF"
+        android:id="@+id/layout_A"
+        android:background="#5289FF"
         android:orientation="horizontal"
         android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <ImageView
+            android:tint="#fff"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
@@ -29,20 +33,21 @@
             android:layout_marginLeft="10dp"
             android:layout_gravity="center_vertical"
             android:text="Node A"
-            android:textSize="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <ImageView
-            android:visibility="invisible"
-            android:id="@+id/alertA"
-            android:layout_marginLeft="230dp"
-            android:layout_gravity="center_vertical"
-            android:tint="#fff"
-            android:src="@drawable/ic_textsms"
+            android:textSize="@dimen/text_size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
+
     </LinearLayout>
+    <ImageView
+android:visibility="invisible"
+        android:id="@+id/alertA"
+        android:layout_marginLeft="305dp"
+        android:layout_gravity="center_vertical"
+        android:tint="#000"
+        android:src="@drawable/ic_textsms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
@@ -51,22 +56,29 @@
         android:layout_width="match_parent"
         android:layout_height="70dp">
         <LinearLayout
-            android:background="#3374FF"
+            android:id="@+id/layout_B"
+            android:background="#296DFF"
             android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <ImageView
+                android:tint="#fff"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
             <TextView
                 android:textColor="#fff"
                 android:textStyle="bold"
                 android:layout_marginLeft="10dp"
                 android:text="Node B"
-                android:textSize="16dp"
+                android:textSize="@dimen/text_size"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <ImageView
-                android:tint="#fff"
+                android:tint="#000"
                 android:id="@+id/alertB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -86,22 +98,29 @@
         android:layout_width="match_parent"
         android:layout_height="70dp">
         <LinearLayout
-            android:background="#3374FF"
+            android:id="@+id/layout_C"
+            android:background="#0045D7"
             android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <ImageView
+                android:tint="#fff"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
             <TextView
                 android:textColor="#fff"
                 android:textStyle="bold"
                 android:layout_marginLeft="10dp"
                 android:text="Node C"
-                android:textSize="16dp"
+                android:textSize="@dimen/text_size"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <ImageView
-                android:tint="#fff"
+                android:tint="#000"
                 android:id="@+id/alertC"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -110,6 +129,33 @@
                 android:src="@drawable/ic_textsms"
                 android:visibility="invisible"
                 />
+
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:onClick="current"
+        android:id="@+id/detail"
+        android:layout_marginTop="9dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+        <LinearLayout
+            android:gravity="center"
+            android:background="#15E415"
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:text="Current Full"
+                android:textSize="16dp"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
 
         </LinearLayout>

@@ -13,6 +13,7 @@ import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.view.View;
@@ -39,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
     static int dataSub_A, dataSub_B, dataSub_C;
     static String dataTop_A, dataTop_B,dataTop_C;
     private final String TAG = this.getClass().getName();
+    TextView ce;
+
+
 
 
     @Override
@@ -48,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         bIn = (CardView) findViewById(R.id.bIn);
         bCm = (CardView) findViewById(R.id.bCm);
         bC = (CardView) findViewById(R.id.bC);
+
+
        // btnsave = (Button) findViewById(R.id.save);
         a = new Connect_Cm(this);
         b = new Connect_In(this);
@@ -94,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent(MainActivity.this,Activity_Cm.class);
                 startActivity(intent);
-                a.disconn();
+                //a.disconn();
             }
         });
 
@@ -107,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent(MainActivity.this, Activity_In.class);
                 startActivity(intent);
-                b.disconn();
+           //    b.disconn();
             }
         });
     }
@@ -119,15 +125,25 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent(MainActivity.this,Activity_DataC.class);
                 startActivity(intent);
-                c.disconn();
+                //c.disconn();
             }
         });
 
     }
 
+    @Override
+    protected void onPause() {
+        //h.removeCallbacks(runnable); //stop handler when activity not visible
+        a.disconn();
+        b.disconn();
+        c.disconn();
+        super.onPause();
+    }
 
-
-
+    public void current(View view) {
+        Intent intent=new Intent(MainActivity.this,Current_Full.class);
+        startActivity(intent);
+    }
 }
 
 

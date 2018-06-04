@@ -43,7 +43,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".Activity_DataC"></activity>
+        <activity android:name=".Activity_DataC" />
+        <activity android:name=".Current_Full"></activity>
     </application>
 
 </manifest>

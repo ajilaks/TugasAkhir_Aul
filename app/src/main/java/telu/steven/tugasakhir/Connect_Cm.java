@@ -8,7 +8,9 @@ import android.net.Uri;
 import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +40,7 @@ public class Connect_Cm extends MainActivity{
     Vibrator vibrator;
     Ringtone myRingtone;
     ImageView alertA;
+    LinearLayout layout_A;
     Connect_Cm(Context context){
 
         mCtx=context;
@@ -51,6 +54,7 @@ public class Connect_Cm extends MainActivity{
         Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         myRingtone = RingtoneManager.getRingtone(mCtx,uri);
         alertA = (ImageView) ((Activity)mCtx).findViewById(R.id.alertA);
+        layout_A = (LinearLayout) ((Activity)mCtx).findViewById(R.id.layout_A);
 
        // conn();
 
@@ -91,11 +95,14 @@ public class Connect_Cm extends MainActivity{
                 dataSub_A = Integer.parseInt(new String (message.getPayload()));
                 dataTop_A = topic;
                 if ( dataSub_A < 10) {
-                    vibrator.vibrate(Integer.parseInt(new String (message.getPayload())));
+                    vibrator.vibrate(10);
                     myRingtone.play();
                     alertA.setVisibility(View.VISIBLE);
+                    layout_A.getLayoutParams().width = 600;
+                    layout_A.requestLayout();
                 }else{
-
+                    layout_A.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
+                    layout_A.requestLayout();
                     alertA.setVisibility(View.INVISIBLE);
                 }
                 //    }

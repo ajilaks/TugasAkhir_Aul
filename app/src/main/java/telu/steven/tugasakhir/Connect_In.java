@@ -8,7 +8,11 @@ import android.net.Uri;
 import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import org.eclipse.paho.android.service.MqttAndroidClient;
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
@@ -37,6 +41,7 @@ public class Connect_In extends MainActivity {
     Vibrator vibrator;
     Ringtone myRingtone;
     ImageView alertB;
+    LinearLayout layout_B;
     Connect_In(Context context){
 
         mCtx=context;
@@ -50,7 +55,9 @@ public class Connect_In extends MainActivity {
         Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         myRingtone = RingtoneManager.getRingtone(mCtx,uri);
         alertB = (ImageView) ((Activity)mCtx).findViewById(R.id.alertB);
+        layout_B = (LinearLayout) ((Activity)mCtx).findViewById(R.id.layout_B);
         // conn();
+
 
     }
 
@@ -88,15 +95,20 @@ public class Connect_In extends MainActivity {
                 // txtTopic.setText(topic);
                 dataSub_B = Integer.parseInt(new String (message.getPayload()));
                 dataTop_B = topic;
+
                 if ( dataSub_B< 10) {
-                    vibrator.vibrate(Integer.parseInt(new String (message.getPayload())));
+                    vibrator.vibrate(10);
                     myRingtone.play();
                     alertB.setVisibility(View.VISIBLE);
+                    layout_B.getLayoutParams().width = 600;
+                    layout_B.requestLayout();
                 }else{
-
+                    layout_B.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
+                    layout_B.requestLayout();
                     alertB.setVisibility(View.INVISIBLE);
                 }
                 //    }
+
 
             }
 
@@ -106,6 +118,12 @@ public class Connect_In extends MainActivity {
             }
         });
     }
+
+//    public void updateData(String dataB){
+//
+//
+//    }
+
 
     private void setSub(){
         try{

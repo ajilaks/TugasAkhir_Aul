@@ -8,7 +8,9 @@ import android.net.Uri;
 import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import org.eclipse.paho.android.service.MqttAndroidClient;
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
@@ -32,6 +34,7 @@ public class Connect_DataC extends MainActivity{
     Vibrator vibrator;
     Ringtone myRingtone;
     ImageView alertC;
+    LinearLayout layout_c;
     Connect_DataC(Context context){
 
         mCtx=context;
@@ -45,7 +48,7 @@ public class Connect_DataC extends MainActivity{
         Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         myRingtone = RingtoneManager.getRingtone(mCtx,uri);
         alertC= (ImageView) ((Activity)mCtx).findViewById(R.id.alertC);
-
+        layout_c = (LinearLayout) ((Activity)mCtx).findViewById(R.id.layout_C);
         // conn();
 
     }
@@ -88,8 +91,11 @@ public class Connect_DataC extends MainActivity{
                     vibrator.vibrate(Integer.parseInt(new String (message.getPayload())));
                     myRingtone.play();
                     alertC.setVisibility(View.VISIBLE);
+                    layout_c.getLayoutParams().width = 600;
+                    layout_c.requestLayout();
                 }else{
-
+                    layout_c.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
+                    layout_c.requestLayout();
                     alertC.setVisibility(View.INVISIBLE);
                 }
                 //    }
