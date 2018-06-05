@@ -77,19 +77,20 @@ android:visibility="invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <ImageView
-                android:tint="#000"
-                android:id="@+id/alertB"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="230dp"
-                android:src="@drawable/ic_textsms"
-                android:visibility="invisible"
-                 />
+
 
 
         </LinearLayout>
+        <ImageView
+            android:tint="#000"
+            android:id="@+id/alertB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="305dp"
+            android:src="@drawable/ic_textsms"
+            android:visibility="invisible"
+            />
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
@@ -119,19 +120,21 @@ android:visibility="invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <ImageView
-                android:tint="#000"
-                android:id="@+id/alertC"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="230dp"
-                android:src="@drawable/ic_textsms"
-                android:visibility="invisible"
-                />
+
 
 
         </LinearLayout>
+
+        <ImageView
+            android:tint="#000"
+            android:id="@+id/alertC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="305dp"
+            android:src="@drawable/ic_textsms"
+            android:visibility="invisible"
+            />
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView

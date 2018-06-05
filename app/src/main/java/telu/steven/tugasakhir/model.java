@@ -7,10 +7,12 @@ package telu.steven.tugasakhir;
 public class model {
 
     String sub;
+    String node;
     model(){
     }
-    model(String sub){
+    model(String node, String sub){
         this.sub = sub;
+        this.node = node;
     }
 
     public void setSub(String sub) {
@@ -19,5 +21,13 @@ public class model {
 
     public String getSub() {
         return sub;
+    }
+
+    public String getNode() {
+        return node;
+    }
+
+    public void setNode(String node) {
+        this.node = node;
     }
 }
