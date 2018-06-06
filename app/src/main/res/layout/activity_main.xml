@@ -145,7 +145,7 @@ android:visibility="invisible"
         android:layout_height="70dp">
         <LinearLayout
             android:gravity="center"
-            android:background="#15E415"
+            android:background="#D7DF01"
             android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">

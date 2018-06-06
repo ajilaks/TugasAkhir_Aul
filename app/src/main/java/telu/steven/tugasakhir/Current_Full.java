@@ -14,19 +14,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Current_Full extends AppCompatActivity {
-    TextView t;
-    TextView f;
+//    TextView t;
+//    TextView f;
     Connect_Cm a;
     Connect_In b;
-    String dataB;
+    Connect_DataC c;
     //--------------
     Handler g = new Handler();
     //int delay = 2*1000; //1 second=1000 milisecond, 15*1000=15seconds
     Runnable runnableG;
     //--------------
     Handler h = new Handler();
-    int delay = 2 * 1000; //1 second=1000 milisecond, 15*1000=15seconds
+    int delay = 1000; //1 second=1000 milisecond, 15*1000=15seconds
     Runnable runnable;
+    //--------------
+    Handler i = new Handler();
+    //int delay = 2*1000; //1 second=1000 milisecond, 15*1000=15seconds
+    Runnable runnableI;
     //--------------
     private List<model> menuList = new ArrayList<>();
     private RecyclerView recyclerView;
@@ -43,13 +47,12 @@ public class Current_Full extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);      //menghubungkan adapter dan layout
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
-
-        t = (TextView) findViewById(R.id.t);
-        f = (TextView) findViewById(R.id.f);
         b = new Connect_In(this);
         a = new Connect_Cm(this);
+        c = new Connect_DataC(this);
         a.conn();
         b.conn();
+        c.conn();
         //addData();
     }
 
@@ -60,6 +63,7 @@ public class Current_Full extends AppCompatActivity {
 
         updateA();
         updateB();
+        updateC();
         //   b.disconn();
         super.onResume();
 
@@ -71,10 +75,10 @@ public class Current_Full extends AppCompatActivity {
                 //do something
                 menuList.clear();
                 a.conn();
-                f.setText(String.valueOf(a.dataSub_A));
+              //  f.setText(String.valueOf(a.dataSub_A));
 
                 if (a.dataSub_A < 10) {
-                    addData("Node A",a.dataSub_A);
+                    addData("Node A","Status: Penuh");
 
                 } else {
                     //t.setEnabled(false);
@@ -95,10 +99,10 @@ public class Current_Full extends AppCompatActivity {
                 //do something
 
                 b.conn();
-                t.setText(String.valueOf(b.dataSub_B));
+          //      t.setText(String.valueOf(b.dataSub_B));
 
                 if (b.dataSub_B < 10) {
-                    addData("Node B",b.dataSub_B);
+                    addData("Node B","Status: Penuh");
                 } else {
                     //t.setEnabled(false);
                 }
@@ -113,6 +117,27 @@ public class Current_Full extends AppCompatActivity {
     }
 
     public void updateC() {
+
+        i.postDelayed(new Runnable() {
+            public void run() {
+                //do something
+
+                c.conn();
+                //      t.setText(String.valueOf(b.dataSub_B));
+
+                if (c.dataSub_C < 10) {
+                    addData("Node C","Status: Penuh");
+                } else {
+                    //t.setEnabled(false);
+                }
+
+
+                runnableI = this;
+
+                i.postDelayed(runnableI, delay);
+            }
+        }, delay);
+
     }
 
 //    @Override
@@ -127,16 +152,18 @@ public class Current_Full extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         h.removeCallbacks(runnable);
-        g.removeCallbacks(runnableG);//stop handler when activity not visible
+        g.removeCallbacks(runnableG);
+        i.removeCallbacks(runnableI);
         b.disconn();
         a.disconn();
+        c.disconn();
         super.onBackPressed();
     }
 
-    public void addData(String node, int jarak) {
+    public void addData(String node, String status) {
 
 
-        menuList.add(new model(node, String.valueOf(jarak)));
+        menuList.add(new model(node, status));
         mAdapter.notifyDataSetChanged();
 
     }
