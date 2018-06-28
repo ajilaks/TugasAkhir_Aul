@@ -1,30 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="telu.steven.tugasakhir.Activity_In">
+    tools:context="telu.steven.tugasakhir.Activity_In"
+    >
     <TextView
+        android:fontFamily="sans-serif-smallcaps"
+        android:layout_marginTop="90dp"
+        android:textSize="24dp"
+        android:text="- Node 2 -"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtTop2"
-        android:layout_marginTop="45dp"
-        android:layout_centerHorizontal="true"
-        android:text="Text"
-        />
-    <TextView
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:showDividers="middle"
+        android:divider="?android:dividerHorizontal"
+        android:gravity="center"
+        android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtIn"
-        android:layout_below="@+id/txtTop2"
-        android:layout_centerHorizontal="true"
-        android:text="Value"/>
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:paddingBottom="10dp"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:text="Topic:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtTop2"
+            android:layout_centerHorizontal="true"
+            android:text="Text"
+
+            />
+    </LinearLayout>
+        <LinearLayout
+            android:paddingBottom="10dp"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:text="Jarak:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:textSize="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtIn"
+                android:layout_below="@+id/txtTop"
+                android:layout_centerHorizontal="true"
+                android:text="Value"/>
+        </LinearLayout>
+
+
+
     <Button
         android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/dc"
         android:text="Disconnect"/>
-</RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

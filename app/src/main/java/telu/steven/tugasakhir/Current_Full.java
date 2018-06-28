@@ -140,14 +140,16 @@ public class Current_Full extends AppCompatActivity {
 
     }
 
-//    @Override
-//    protected void onPause() {
-//        h.removeCallbacks(runnable);
-//        g.removeCallbacks(runnableG);//stop handler when activity not visible
-//        b.disconn();
-//        a.disconn();
-//        super.onPause();
-//    }
+    @Override
+    protected void onPause() {
+        h.removeCallbacks(runnable);
+        g.removeCallbacks(runnableG);
+        i.removeCallbacks(runnableI);
+        b.disconn();
+        a.disconn();
+        c.disconn();
+        super.onPause();
+    }
 
     @Override
     public void onBackPressed() {

@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TugasAkhir_Aul.iml" filepath="$PROJECT_DIR$/TugasAkhir_Aul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TugasAkhir.iml" filepath="$PROJECT_DIR$/TugasAkhir.iml" />
+      <module fileurl="file://D:\Projectan\temp\TugasAkhir\TugasAkhir_Aul.iml" filepath="D:\Projectan\temp\TugasAkhir\TugasAkhir_Aul.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

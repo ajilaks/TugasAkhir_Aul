@@ -15,12 +15,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".MainActivity"
+            android:parentActivityName=".MainMenu">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainMenu"/>
+
         </activity>
 
         <service android:name="org.eclipse.paho.android.service.MqttService" />
@@ -43,8 +45,31 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".Activity_DataC" />
-        <activity android:name=".Current_Full"></activity>
+        <activity
+            android:name=".Activity_DataC"
+            android:parentActivityName=".MainActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".Current_Full"
+
+            android:parentActivityName=".MainMenu">
+
+        <!-- Parent activity meta-data to support 4.0 and lower -->
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainMenu"/></activity>
+        <activity android:name=".MainMenu">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
     </application>
 
 </manifest>

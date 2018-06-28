@@ -76,22 +76,7 @@ public class MainActivity extends AppCompatActivity {
         // do some stuff here
     }
 
-    public void onBackPressed()
-    {
-        new AlertDialog.Builder(this)
-                .setMessage("Exit?")
-                .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        MainActivity.this.finish();
-                        moveTaskToBack(true);
-                        System.exit(0);
-                    }
-                })
-                .setNegativeButton("No",null)
-                .show();
-    }
+
 
     public void TampilCm()
     {
@@ -140,10 +125,7 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
     }
 
-    public void current(View view) {
-        Intent intent=new Intent(MainActivity.this,Current_Full.class);
-        startActivity(intent);
-    }
+
 }
 
 

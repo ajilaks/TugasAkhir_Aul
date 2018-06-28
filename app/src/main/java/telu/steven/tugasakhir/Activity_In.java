@@ -48,10 +48,10 @@ public class Activity_In extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity__cm);
+        setContentView(R.layout.activity__in);
 
-        txtSub=(TextView)findViewById(R.id.txtCm);
-        txtTopic=(TextView)findViewById(R.id.txtTop);
+        txtSub=(TextView)findViewById(R.id.txtIn);
+        txtTopic=(TextView)findViewById(R.id.txtTop2);
         btndc=(Button) findViewById(R.id.dc);
 
         vibrator =(Vibrator)getSystemService(VIBRATOR_SERVICE);
