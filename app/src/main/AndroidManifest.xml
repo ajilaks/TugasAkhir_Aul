@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="telu.steven.tugasakhir">
+    package="telu.aul.AppsTA">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -15,54 +15,54 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
-            android:parentActivityName=".MainMenu">
+        <activity android:name="telu.aul.AppsTA.MainActivity"
+            android:parentActivityName="telu.aul.AppsTA.MainMenu">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainMenu"/>
+                android:value="telu.aul.AppsTA.MainMenu"/>
 
         </activity>
 
         <service android:name="org.eclipse.paho.android.service.MqttService" />
 
         <activity
-            android:name=".Activity_Cm"
-            android:parentActivityName=".MainActivity">
+            android:name="telu.aul.AppsTA.Activity_Cm"
+            android:parentActivityName="telu.aul.AppsTA.MainActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="telu.aul.AppsTA.MainActivity" />
         </activity>
         <activity
-            android:name=".Activity_In"
-            android:parentActivityName=".MainActivity">
+            android:name="telu.aul.AppsTA.Activity_In"
+            android:parentActivityName="telu.aul.AppsTA.MainActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="telu.aul.AppsTA.MainActivity" />
         </activity>
         <activity
-            android:name=".Activity_DataC"
-            android:parentActivityName=".MainActivity">
+            android:name="telu.aul.AppsTA.Activity_DataC"
+            android:parentActivityName="telu.aul.AppsTA.MainActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="telu.aul.AppsTA.MainActivity" />
         </activity>
-        <activity android:name=".Current_Full"
+        <activity android:name="telu.aul.AppsTA.Current_Full"
 
-            android:parentActivityName=".MainMenu">
+            android:parentActivityName="telu.aul.AppsTA.MainMenu">
 
         <!-- Parent activity meta-data to support 4.0 and lower -->
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value=".MainMenu"/></activity>
-        <activity android:name=".MainMenu">
+            android:value="telu.aul.AppsTA.MainMenu"/></activity>
+        <activity android:name="telu.aul.AppsTA.MainMenu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

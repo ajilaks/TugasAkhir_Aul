@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="telu.steven.tugasakhir.Current_Full">
+    tools:context="telu.aul.AppsTA.Current_Full">
 
 
     <android.support.v7.widget.RecyclerView

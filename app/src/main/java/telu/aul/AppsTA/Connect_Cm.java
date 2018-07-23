@@ -1,4 +1,4 @@
-package telu.aul.tugasakhir;
+package telu.aul.AppsTA;
 
 import android.app.Activity;
 import android.content.Context;

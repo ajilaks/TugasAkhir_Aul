@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="telu.steven.tugasakhir.Activity_DataC">
+    tools:context="telu.aul.AppsTA.Activity_DataC">
     <TextView
         android:fontFamily="sans-serif-smallcaps"
         android:layout_marginTop="90dp"

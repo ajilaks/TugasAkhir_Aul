@@ -1,5 +1,5 @@
 
-package telu.aul.tugasakhir;
+package telu.aul.AppsTA;
 
         import android.content.Intent;
         import android.media.Ringtone;
