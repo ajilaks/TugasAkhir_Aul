@@ -1,18 +1,15 @@
-package telu.steven.tugasakhir;
+package telu.aul.tugasakhir;
 
 import android.content.Intent;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import android.nfc.Tag;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ScrollingTabContainerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,33 +22,33 @@ import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
-import org.eclipse.paho.client.mqttv3.util.Strings;
-import org.w3c.dom.Text;
-public class Activity_Cm extends AppCompatActivity {
-//    Main main;
+
+public class Activity_DataC extends AppCompatActivity {
+
+    //  Main main;
 
     TextView txtSub,txtTopic;
     static String MQTTHOST = "tcp://128.199.141.4:1883";
     static String USERNAME = "AccessNet";
     static String PASSWORD = "accessnet";
-    String topicStr = "data1";
+    String topicStr = "data3";
     Button btndc;
-   // String data;
+    // String data;
     private final String TAG = this.getClass().getName();
 //    String data = new String();
 
     MqttAndroidClient client;
-//    TextView txtSub,txtTopic;
+    //    TextView txtSub,txtTopic;
     MqttConnectOptions options;
     Vibrator vibrator;
     Ringtone myRingtone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity__cm);
+        setContentView(R.layout.activity__data_c);
 
-        txtSub=(TextView)findViewById(R.id.txtCm);
-        txtTopic=(TextView)findViewById(R.id.txtTop);
+        txtSub=(TextView)findViewById(R.id.txtData3);
+        txtTopic=(TextView)findViewById(R.id.txtTop3);
         btndc=(Button) findViewById(R.id.dc);
 
         vibrator =(Vibrator)getSystemService(VIBRATOR_SERVICE);
@@ -65,8 +62,8 @@ public class Activity_Cm extends AppCompatActivity {
         options.setUserName(USERNAME);
         options.setPassword(PASSWORD.toCharArray());
 
-        txtSub.setText(String.valueOf(MainActivity.dataSub_A) +" cm");
-        txtTopic.setText(MainActivity.dataTop_A);
+        txtSub.setText(String.valueOf(MainActivity.dataSub_C) +" cm");
+        txtTopic.setText(MainActivity.dataTop_C);
 
         conn();
         disconnect();
@@ -80,13 +77,13 @@ public class Activity_Cm extends AppCompatActivity {
             token.setActionCallback(new IMqttActionListener() {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
-                    Toast.makeText(Activity_Cm.this,"konek",Toast.LENGTH_LONG).show();
+                    Toast.makeText(Activity_DataC.this,"konek",Toast.LENGTH_LONG).show();
                     setSub();
                 }
 
                 @Override
                 public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                    Toast.makeText(Activity_Cm.this,"gagal konek",Toast.LENGTH_LONG).show();
+                    Toast.makeText(Activity_DataC.this,"gagal konek",Toast.LENGTH_LONG).show();
                 }
             });
         } catch (MqttException e) {
@@ -101,7 +98,7 @@ public class Activity_Cm extends AppCompatActivity {
             @Override
             public void messageArrived(String topic, MqttMessage message) throws Exception {
                 Log.d("topic", topic);
-                if (topic.equals("data1")) {
+                if (topic.equals("data3")) {
                     String messages = new String(message.getPayload())+" cm";
                     txtSub.setText(messages);//message.getPayload --> Ambil datanya
                     txtTopic.setText(topic);
@@ -119,12 +116,6 @@ public class Activity_Cm extends AppCompatActivity {
             }
         });
 
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        disconn();
     }
 
     public void pub(View v) {
@@ -146,7 +137,11 @@ public class Activity_Cm extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        disconn();
+    }
 
     public void disconn(){
         try {
@@ -154,13 +149,13 @@ public class Activity_Cm extends AppCompatActivity {
             token.setActionCallback(new IMqttActionListener() {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
-                  //  Toast.makeText(MainActivity.this,"ga konek",Toast.LENGTH_LONG).show();
+                    //  Toast.makeText(MainActivity.this,"ga konek",Toast.LENGTH_LONG).show();
 
                 }
 
                 @Override
                 public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                   // Toast.makeText(MainActivity.this,"gabisa gagal konek",Toast.LENGTH_LONG).show();
+                    // Toast.makeText(MainActivity.this,"gabisa gagal konek",Toast.LENGTH_LONG).show();
                 }
             });
         } catch (MqttException e) {
@@ -177,17 +172,17 @@ public class Activity_Cm extends AppCompatActivity {
                     token.setActionCallback(new IMqttActionListener() {
                         @Override
                         public void onSuccess(IMqttToken asyncActionToken) {
-                            Toast.makeText(Activity_Cm.this,"Disconnected",Toast.LENGTH_LONG).show();
-                            Intent intent=new Intent(Activity_Cm.this, MainActivity.class);
+                            Toast.makeText(Activity_DataC.this,"Disconnected",Toast.LENGTH_LONG).show();
+                            Intent intent=new Intent(Activity_DataC.this, MainActivity.class);
 //                            startActivity(intent);
-                           // finish();
+                            // finish();
 //                            moveTaskToBack(true);
 
                         }
 
                         @Override
                         public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                            Toast.makeText(Activity_Cm.this,"gabisa gagal konek",Toast.LENGTH_LONG).show();
+                            Toast.makeText(Activity_DataC.this,"gabisa gagal konek",Toast.LENGTH_LONG).show();
                         }
                     });
                 } catch (MqttException e) {
@@ -196,5 +191,4 @@ public class Activity_Cm extends AppCompatActivity {
             }
         });
     }
-
 }

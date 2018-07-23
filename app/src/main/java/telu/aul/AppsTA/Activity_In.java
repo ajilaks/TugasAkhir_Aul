@@ -1,15 +1,13 @@
 
-package telu.steven.tugasakhir;
+package telu.aul.tugasakhir;
 
         import android.content.Intent;
         import android.media.Ringtone;
         import android.media.RingtoneManager;
         import android.net.Uri;
-        import android.nfc.Tag;
         import android.os.Vibrator;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
-        import android.support.v7.widget.ScrollingTabContainerView;
         import android.util.Log;
         import android.view.View;
         import android.widget.Button;
@@ -25,8 +23,7 @@ package telu.steven.tugasakhir;
         import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
         import org.eclipse.paho.client.mqttv3.MqttException;
         import org.eclipse.paho.client.mqttv3.MqttMessage;
-        import org.eclipse.paho.client.mqttv3.util.Strings;
-        import org.w3c.dom.Text;
+
 public class Activity_In extends AppCompatActivity {
    //  Main main;
 

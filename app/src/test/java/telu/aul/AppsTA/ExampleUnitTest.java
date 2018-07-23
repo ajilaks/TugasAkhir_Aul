@@ -1,4 +1,4 @@
-package telu.steven.tugasakhir;
+package telu.aul.tugasakhir;
 
 import org.junit.Test;
 

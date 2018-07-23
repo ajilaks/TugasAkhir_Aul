@@ -1,4 +1,4 @@
-package telu.steven.tugasakhir;
+package telu.aul.tugasakhir;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,8 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import org.eclipse.paho.android.service.MqttAndroidClient;
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
