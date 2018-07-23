@@ -77,11 +77,11 @@ public class Current_Full extends AppCompatActivity {
                 a.conn();
               //  f.setText(String.valueOf(a.dataSub_A));
 
-                if (a.dataSub_A < 10) {
+                if (a.dataSub_A < 10 && a.dataSub_A != 0) {
                     addData("Node A","Status: Penuh");
 
-                } else {
-                    //t.setEnabled(false);
+                }else if(a.dataSub_A == 0) {
+                    //addData("Node A","Status: Not Connected");
                 }
 
 
@@ -101,10 +101,10 @@ public class Current_Full extends AppCompatActivity {
                 b.conn();
           //      t.setText(String.valueOf(b.dataSub_B));
 
-                if (b.dataSub_B < 10) {
+                if (b.dataSub_B < 10 && b.dataSub_B != 0 ) {
                     addData("Node B","Status: Penuh");
-                } else {
-                    //t.setEnabled(false);
+                } else if(b.dataSub_B == 0) {
+                   // addData("Node B","Status: Not Connected");
                 }
 
 
@@ -125,10 +125,10 @@ public class Current_Full extends AppCompatActivity {
                 c.conn();
                 //      t.setText(String.valueOf(b.dataSub_B));
 
-                if (c.dataSub_C < 10) {
+                if (c.dataSub_C < 10 && c.dataSub_C!=0 ) {
                     addData("Node C","Status: Penuh");
-                } else {
-                    //t.setEnabled(false);
+                }else if(c.dataSub_C == 0) {
+                   // addData("Node C","Status: Not Connected");
                 }
 
 

@@ -65,7 +65,7 @@ public class Activity_Cm extends AppCompatActivity {
         options.setUserName(USERNAME);
         options.setPassword(PASSWORD.toCharArray());
 
-        txtSub.setText(String.valueOf(MainActivity.dataSub_A));
+        txtSub.setText(String.valueOf(MainActivity.dataSub_A) +" cm");
         txtTopic.setText(MainActivity.dataTop_A);
 
         conn();
@@ -102,7 +102,8 @@ public class Activity_Cm extends AppCompatActivity {
             public void messageArrived(String topic, MqttMessage message) throws Exception {
                 Log.d("topic", topic);
                 if (topic.equals("data1")) {
-                    txtSub.setText(new String (message.getPayload()));//message.getPayload --> Ambil datanya
+                    String messages = new String(message.getPayload())+" cm";
+                    txtSub.setText(messages);//message.getPayload --> Ambil datanya
                     txtTopic.setText(topic);
                     if (Integer.parseInt(new String (message.getPayload())) < 10) {
                         vibrator.vibrate(Integer.parseInt(new String (message.getPayload())));

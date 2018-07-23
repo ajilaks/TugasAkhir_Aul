@@ -25,7 +25,7 @@
     android:layout_height="70dp">
     <LinearLayout
         android:id="@+id/layout_A"
-        android:background="#116611"
+        android:background="#24A335"
         android:orientation="horizontal"
         android:padding="5dp"
         android:layout_width="match_parent"
@@ -54,7 +54,7 @@ android:visibility="invisible"
         android:layout_marginLeft="305dp"
         android:layout_gravity="center_vertical"
         android:tint="#000"
-        android:src="@drawable/ic_textsms"
+        android:src="@drawable/ic_warn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </android.support.v7.widget.CardView>
@@ -66,7 +66,7 @@ android:visibility="invisible"
         android:layout_height="70dp">
         <LinearLayout
             android:id="@+id/layout_B"
-            android:background="#55AA55"
+            android:background="#24A335"
             android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -97,7 +97,7 @@ android:visibility="invisible"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="305dp"
-            android:src="@drawable/ic_textsms"
+            android:src="@drawable/ic_warn"
             android:visibility="invisible"
             />
     </android.support.v7.widget.CardView>
@@ -109,7 +109,7 @@ android:visibility="invisible"
         android:layout_height="70dp">
         <LinearLayout
             android:id="@+id/layout_C"
-            android:background="#88CC88"
+            android:background="#24A335"
             android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -141,7 +141,7 @@ android:visibility="invisible"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="305dp"
-            android:src="@drawable/ic_textsms"
+            android:src="@drawable/ic_warn"
             android:visibility="invisible"
             />
     </android.support.v7.widget.CardView>
