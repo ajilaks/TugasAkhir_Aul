@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import org.eclipse.paho.android.service.MqttAndroidClient;
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
@@ -39,8 +40,11 @@ public class Connect_Cm extends MainActivity{
     Ringtone myRingtone;
     ImageView alertA;
     LinearLayout layout_A;
-    Connect_Cm(Context context){
+    int[] queData = new int[2];
 
+    Connect_Cm(Context context){
+        queData[0] = 0;
+        queData[1] = 0;
         mCtx=context;
         String clientId = MqttClient.generateClientId();
         client =  new MqttAndroidClient(context,MQTTHOST, clientId);
@@ -92,17 +96,42 @@ public class Connect_Cm extends MainActivity{
                 // txtTopic.setText(topic);
                 dataSub_A = Integer.parseInt(new String (message.getPayload()));
                 dataTop_A = topic;
-                if ( dataSub_A < 10) {
-                    vibrator.vibrate(10);
-                    myRingtone.play();
-                    alertA.setVisibility(View.VISIBLE);
-                    layout_A.getLayoutParams().width = 600;
-                    layout_A.requestLayout();
+
+                if (queData[1]!=0){
+                    queData[1] = queData[0];
+                    queData[0] = dataSub_A;
+                    if ( dataSub_A < 10 && queData[1]>10) {
+                        vibrator.vibrate(100);
+                        myRingtone.play();
+                        alertA.setVisibility(View.VISIBLE);
+                        layout_A.getLayoutParams().width = 600;
+                        layout_A.requestLayout();
+                    }else if(dataSub_A < 10){
+                        alertA.setVisibility(View.VISIBLE);
+                        layout_A.getLayoutParams().width = 600;
+                        layout_A.requestLayout();
+                    }else{
+                        layout_A.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
+                        layout_A.requestLayout();
+                        alertA.setVisibility(View.INVISIBLE);
+                    }
                 }else{
-                    layout_A.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
-                    layout_A.requestLayout();
-                    alertA.setVisibility(View.INVISIBLE);
+                    queData[1] = dataSub_A;
+                    if ( dataSub_A < 10 ) {
+                        vibrator.vibrate(100);
+                        myRingtone.play();
+                        alertA.setVisibility(View.VISIBLE);
+                        layout_A.getLayoutParams().width = 600;
+                        layout_A.requestLayout();
+                    }else{
+                        layout_A.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
+                        layout_A.requestLayout();
+                        alertA.setVisibility(View.INVISIBLE);
+                    }
+
                 }
+
+
                 //    }
 
             }

@@ -81,7 +81,6 @@ public class Current_Full extends AppCompatActivity {
                     //addData("Node A","Status: Not Connected");
                 }
 
-
                 //  Toast.makeText(getApplicationContext(),String.valueOf(a.dataSub_A),Toast.LENGTH_SHORT).show();
                 runnableG = this;
 
@@ -139,24 +138,30 @@ public class Current_Full extends AppCompatActivity {
 
     @Override
     protected void onPause() {
-        h.removeCallbacks(runnable);
-        g.removeCallbacks(runnableG);
-        i.removeCallbacks(runnableI);
-        b.disconn();
-        a.disconn();
-        c.disconn();
+//        h.removeCallbacks(runnable);
+//        g.removeCallbacks(runnableG);
+//        i.removeCallbacks(runnableI);
+//        b.disconn();
+//        a.disconn();
+//        c.disconn();
         super.onPause();
     }
 
     @Override
     public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onDestroy() {
         h.removeCallbacks(runnable);
         g.removeCallbacks(runnableG);
         i.removeCallbacks(runnableI);
         b.disconn();
         a.disconn();
         c.disconn();
-        super.onBackPressed();
+        super.onDestroy();
     }
 
     public void addData(String node, String status) {

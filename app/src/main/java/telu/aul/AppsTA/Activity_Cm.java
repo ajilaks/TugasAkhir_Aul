@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,11 +42,13 @@ public class Activity_Cm extends AppCompatActivity {
     MqttConnectOptions options;
     Vibrator vibrator;
     Ringtone myRingtone;
+    int[] queData = new int[2];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__cm);
-
+        queData[0] = 0;
+        queData[1] = 0;
         txtSub=(TextView)findViewById(R.id.txtCm);
         txtTopic=(TextView)findViewById(R.id.txtTop);
         btndc=(Button) findViewById(R.id.dc);
@@ -76,13 +79,13 @@ public class Activity_Cm extends AppCompatActivity {
             token.setActionCallback(new IMqttActionListener() {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
-                    Toast.makeText(Activity_Cm.this,"konek",Toast.LENGTH_LONG).show();
+                   // Toast.makeText(Activity_Cm.this,"konek",Toast.LENGTH_LONG).show();
                     setSub();
                 }
 
                 @Override
                 public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                    Toast.makeText(Activity_Cm.this,"gagal konek",Toast.LENGTH_LONG).show();
+                   // Toast.makeText(Activity_Cm.this,"gagal konek",Toast.LENGTH_LONG).show();
                 }
             });
         } catch (MqttException e) {
@@ -101,10 +104,30 @@ public class Activity_Cm extends AppCompatActivity {
                     String messages = new String(message.getPayload())+" cm";
                     txtSub.setText(messages);//message.getPayload --> Ambil datanya
                     txtTopic.setText(topic);
-                    if (Integer.parseInt(new String (message.getPayload())) < 10) {
-                        vibrator.vibrate(Integer.parseInt(new String (message.getPayload())));
-                        myRingtone.play();
+//                    if (Integer.parseInt(new String (message.getPayload())) < 10) {
+//                        vibrator.vibrate(Integer.parseInt(new String (message.getPayload())));
+//                        myRingtone.play();
+//                    }
+                    int dataSub_A = Integer.parseInt(new String (message.getPayload()));
+                    if (queData[1]!=0){
+                        queData[1] = queData[0];
+                        queData[0] = dataSub_A;
+                        if ( dataSub_A < 10 && queData[1]>10) {
+                            vibrator.vibrate(100);
+                            myRingtone.play();
+
+
+                        }else {
+                            queData[1] = dataSub_A;
+                            if (dataSub_A < 10) {
+                                vibrator.vibrate(100);
+                                myRingtone.play();
+                            }
+                        }
                     }
+
+
+
                 }
 
             }
@@ -173,7 +196,7 @@ public class Activity_Cm extends AppCompatActivity {
                     token.setActionCallback(new IMqttActionListener() {
                         @Override
                         public void onSuccess(IMqttToken asyncActionToken) {
-                            Toast.makeText(Activity_Cm.this,"Disconnected",Toast.LENGTH_LONG).show();
+                           // Toast.makeText(Activity_Cm.this,"Disconnected",Toast.LENGTH_LONG).show();
                             Intent intent=new Intent(Activity_Cm.this, MainActivity.class);
 //                            startActivity(intent);
                            // finish();
@@ -183,7 +206,7 @@ public class Activity_Cm extends AppCompatActivity {
 
                         @Override
                         public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                            Toast.makeText(Activity_Cm.this,"gabisa gagal konek",Toast.LENGTH_LONG).show();
+                          //  Toast.makeText(Activity_Cm.this,"gabisa gagal konek",Toast.LENGTH_LONG).show();
                         }
                     });
                 } catch (MqttException e) {

@@ -35,8 +35,10 @@ public class Connect_DataC extends MainActivity{
     Ringtone myRingtone;
     ImageView alertC;
     LinearLayout layout_c;
+    int[] queData = new int[2];
     Connect_DataC(Context context){
-
+        queData[0] = 0;
+        queData[1] = 0;
         mCtx=context;
         String clientId = MqttClient.generateClientId();
         client =  new MqttAndroidClient(context,MQTTHOST, clientId);
@@ -87,16 +89,39 @@ public class Connect_DataC extends MainActivity{
                 // txtTopic.setText(topic);
                 dataSub_C = Integer.parseInt(new String (message.getPayload()));
                 dataTop_C = topic;
-                if ( dataSub_C < 10) {
-                    vibrator.vibrate(Integer.parseInt(new String (message.getPayload())));
-                    myRingtone.play();
-                    alertC.setVisibility(View.VISIBLE);
-                    layout_c.getLayoutParams().width = 600;
-                    layout_c.requestLayout();
+
+                if (queData[1]!=0){
+                    queData[1] = queData[0];
+                    queData[0] = dataSub_C;
+                    if ( dataSub_C < 10 && queData[1]>10) {
+                        vibrator.vibrate(100);
+                        myRingtone.play();
+                        alertC.setVisibility(View.VISIBLE);
+                        layout_c.getLayoutParams().width = 600;
+                        layout_c.requestLayout();
+                    }else if(dataSub_C < 10){
+                        alertC.setVisibility(View.VISIBLE);
+                        layout_c.getLayoutParams().width = 600;
+                        layout_c.requestLayout();
+                    }else{
+                        layout_c.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
+                        layout_c.requestLayout();
+                        alertC.setVisibility(View.INVISIBLE);
+                    }
                 }else{
-                    layout_c.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
-                    layout_c.requestLayout();
-                    alertC.setVisibility(View.INVISIBLE);
+                    queData[1] = dataSub_C;
+                    if ( dataSub_C < 10 ) {
+                        vibrator.vibrate(100);
+                        myRingtone.play();
+                        alertC.setVisibility(View.VISIBLE);
+                        layout_c.getLayoutParams().width = 600;
+                        layout_c.requestLayout();
+                    }else{
+                        layout_c.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
+                        layout_c.requestLayout();
+                        alertC.setVisibility(View.INVISIBLE);
+                    }
+
                 }
                 //    }
 

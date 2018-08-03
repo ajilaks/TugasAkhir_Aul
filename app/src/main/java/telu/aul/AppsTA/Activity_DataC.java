@@ -42,11 +42,13 @@ public class Activity_DataC extends AppCompatActivity {
     MqttConnectOptions options;
     Vibrator vibrator;
     Ringtone myRingtone;
+    int[] queData = new int[2];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__data_c);
-
+        queData[0] = 0;
+        queData[1] = 0;
         txtSub=(TextView)findViewById(R.id.txtData3);
         txtTopic=(TextView)findViewById(R.id.txtTop3);
         btndc=(Button) findViewById(R.id.dc);
@@ -77,13 +79,13 @@ public class Activity_DataC extends AppCompatActivity {
             token.setActionCallback(new IMqttActionListener() {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
-                    Toast.makeText(Activity_DataC.this,"konek",Toast.LENGTH_LONG).show();
+                   // Toast.makeText(Activity_DataC.this,"konek",Toast.LENGTH_LONG).show();
                     setSub();
                 }
 
                 @Override
                 public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                    Toast.makeText(Activity_DataC.this,"gagal konek",Toast.LENGTH_LONG).show();
+                    //Toast.makeText(Activity_DataC.this,"gagal konek",Toast.LENGTH_LONG).show();
                 }
             });
         } catch (MqttException e) {
@@ -102,10 +104,25 @@ public class Activity_DataC extends AppCompatActivity {
                     String messages = new String(message.getPayload())+" cm";
                     txtSub.setText(messages);//message.getPayload --> Ambil datanya
                     txtTopic.setText(topic);
-                    if (Integer.parseInt(new String (message.getPayload())) < 10) {
-                        vibrator.vibrate(Integer.parseInt(new String (message.getPayload())));
-                        myRingtone.play();
+
+                    int dataSub_C = Integer.parseInt(new String (message.getPayload()));
+                    if (queData[1]!=0){
+                        queData[1] = queData[0];
+                        queData[0] = dataSub_C;
+                        if ( dataSub_C < 10 && queData[1]>10) {
+                            vibrator.vibrate(100);
+                            myRingtone.play();
+
+
+                        }else {
+                            queData[1] = dataSub_C;
+                            if (dataSub_C < 10) {
+                                vibrator.vibrate(100);
+                                myRingtone.play();
+                            }
+                        }
                     }
+
                 }
 
             }
@@ -172,7 +189,7 @@ public class Activity_DataC extends AppCompatActivity {
                     token.setActionCallback(new IMqttActionListener() {
                         @Override
                         public void onSuccess(IMqttToken asyncActionToken) {
-                            Toast.makeText(Activity_DataC.this,"Disconnected",Toast.LENGTH_LONG).show();
+                           // Toast.makeText(Activity_DataC.this,"Disconnected",Toast.LENGTH_LONG).show();
                             Intent intent=new Intent(Activity_DataC.this, MainActivity.class);
 //                            startActivity(intent);
                             // finish();
@@ -182,7 +199,7 @@ public class Activity_DataC extends AppCompatActivity {
 
                         @Override
                         public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                            Toast.makeText(Activity_DataC.this,"gabisa gagal konek",Toast.LENGTH_LONG).show();
+                           // Toast.makeText(Activity_DataC.this,"gabisa gagal konek",Toast.LENGTH_LONG).show();
                         }
                     });
                 } catch (MqttException e) {

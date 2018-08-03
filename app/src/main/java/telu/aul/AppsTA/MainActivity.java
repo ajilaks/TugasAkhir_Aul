@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         a = new Connect_Cm(this);
         b = new Connect_In(this);
         c = new Connect_DataC(this);
+
         a.conn();
         b.conn();
         c.conn();
@@ -95,11 +96,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause() {
-        //h.removeCallbacks(runnable); //stop handler when activity not visible
+    public void onBackPressed() {
+finish();
+
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onStop() {
+
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
         a.disconn();
         b.disconn();
         c.disconn();
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        //h.removeCallbacks(runnable); //stop handler when activity not visible
+
         super.onPause();
     }
 
