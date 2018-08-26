@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,17 +72,18 @@ public class Current_Full extends AppCompatActivity {
             public void run() {
                 //do something
                 menuList.clear();
+                mAdapter.notifyDataSetChanged();
                 a.conn();
               //  f.setText(String.valueOf(a.dataSub_A));
 
-                if (a.dataSub_A < 10 && a.dataSub_A != 0) {
+                if (a.dataSub_A < 10 && b.dataSub_A != 0) {
                     addData("Node A","Status: Penuh");
 
                 }else if(a.dataSub_A == 0) {
                     //addData("Node A","Status: Not Connected");
                 }
 
-                //  Toast.makeText(getApplicationContext(),String.valueOf(a.dataSub_A),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),String.valueOf(a.dataSub_A),Toast.LENGTH_SHORT).show();
                 runnableG = this;
 
                 g.postDelayed(runnableG, delay);
@@ -93,7 +95,7 @@ public class Current_Full extends AppCompatActivity {
         h.postDelayed(new Runnable() {
             public void run() {
                 //do something
-                menuList.clear();
+               // menuList.clear();
                 b.conn();
           //      t.setText(String.valueOf(b.dataSub_B));
 
@@ -117,7 +119,7 @@ public class Current_Full extends AppCompatActivity {
         i.postDelayed(new Runnable() {
             public void run() {
                 //do something
-                menuList.clear();
+              //  menuList.clear();
                 c.conn();
                 //      t.setText(String.valueOf(b.dataSub_B));
 
