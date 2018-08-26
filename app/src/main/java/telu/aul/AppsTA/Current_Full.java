@@ -93,7 +93,7 @@ public class Current_Full extends AppCompatActivity {
         h.postDelayed(new Runnable() {
             public void run() {
                 //do something
-
+                menuList.clear();
                 b.conn();
           //      t.setText(String.valueOf(b.dataSub_B));
 
@@ -117,7 +117,7 @@ public class Current_Full extends AppCompatActivity {
         i.postDelayed(new Runnable() {
             public void run() {
                 //do something
-
+                menuList.clear();
                 c.conn();
                 //      t.setText(String.valueOf(b.dataSub_B));
 
